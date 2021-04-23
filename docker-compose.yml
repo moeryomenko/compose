@@ -24,6 +24,16 @@ services:
       - testnet
     ports:
       - 6379:6379
+  # third-party service wanted to mock.
+  squalid-service:
+    image: moeryomenko/ngxjs:latest
+    networks:
+      - testnet
+    ports:
+      - 8080:80
+    volumes:
+      # for mocking handlers of third-party service can used njs.
+      - /mocks:/etc/nginx/
 
 networks:
   testnet:
